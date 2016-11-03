@@ -44,7 +44,7 @@ if (!file_exists(__DIR__.'/client.key')) {
     file_put_contents($pemFile, $pemString);
 }
 
-$url  = 'https://127.0.0.1:8443';
+$url  = 'https://185.128.58.234:8443';
 $cert = 'client.crt';
 $key  = 'client.key';
 $pem  = __DIR__.'/client.pem';
@@ -67,7 +67,7 @@ $lxd = new \Opensaucesystems\Lxd\Client($adapter);
 
 $lxd->setUrl($url);
 
-print_r($lxd->host->info());
+// print_r($lxd->host->info());
 // var_dump($lxd->host->trusted());
 
 //***********************
@@ -152,7 +152,12 @@ print_r($lxd->host->info());
 // print_r($lxd->containers->info('che-oss-place'));
 
 // Execute command
-// print_r($lxd->containers->execute('test4', "echo 'hello world'", [], true));
+// print_r($lxd->containers->execute('test4', "echo 'hello world'", true, [], true));
+
+// Logs
+// print_r($lxd->containers->logs->all('test4'));
+// print_r($lxd->containers->logs->read('test4', 'exec_60bec74f-caa5-4759-9623-8dfd910b7594.stdout'));
+// $lxd->containers->logs->remove('test4', 'exec_0a2b4481-4502-4c0e-aca3-a95b4f5ce8af.stdout');
 
 // Write and read file
 // print_r($lxd->containers->state('test4'));
